@@ -11,7 +11,7 @@ def mevcut_sutun(tamamlanmis_tablo, indeks, deger):
         return True
     return False
 
-def mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger):
+def mevcut_alt_kare(tamamlanmis_tablo, indeks, deger):
     for i in range((indeks[0] - indeks[0] % 3), (indeks[0] - indeks[0] % 3) + 3):
         for j in range((indeks[1] - indeks[1] % 3), (indeks[1] - indeks[1] % 3) + 3):
             if deger == tamamlanmis_tablo[i][j]:
@@ -19,7 +19,7 @@ def mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger):
     return False
 
 def kontrol(tamamlanmis_tablo, deger, indeks):
-    if not mevcut_satir(tamamlanmis_tablo, indeks, deger) and not mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger) \
+    if not mevcut_satir(tamamlanmis_tablo, indeks, deger) and not mevcut_alt_kare(tamamlanmis_tablo, indeks, deger) \
             and not mevcut_sutun(tamamlanmis_tablo, indeks, deger):
         return True
     else:
