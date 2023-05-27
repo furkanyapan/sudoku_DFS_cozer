@@ -1,20 +1,16 @@
 import numpy as np
 import time
 
-
-# atancak sayının satırda olup olmadığını kontrol et
 def mevcut_satir(tamamlanmis_tablo, indeks, deger):
     if deger in tamamlanmis_tablo[indeks[0], :]:
         return True
     return False
 
-# atanacak değerin mevcut sütunda olup olmadığını kontrol et
 def mevcut_sutun(tamamlanmis_tablo, indeks, deger):
     if deger in tamamlanmis_tablo[:, indeks[1]]:
         return True
     return False
 
-# atancak değerin mevcut 3x3 tablosunda olup olmadığını kontrol et
 def mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger):
     for i in range((indeks[0] - indeks[0] % 3), (indeks[0] - indeks[0] % 3) + 3):
         for j in range((indeks[1] - indeks[1] % 3), (indeks[1] - indeks[1] % 3) + 3):
@@ -22,7 +18,6 @@ def mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger):
                 return True
     return False
 
-# Tüm kontrol fonksiyonlarını çağır
 def kontrol(tamamlanmis_tablo, deger, indeks):
     if not mevcut_satir(tamamlanmis_tablo, indeks, deger) and not mevcut_alt_dizi(tamamlanmis_tablo, indeks, deger) \
             and not mevcut_sutun(tamamlanmis_tablo, indeks, deger):
@@ -30,7 +25,6 @@ def kontrol(tamamlanmis_tablo, deger, indeks):
     else:
         return False
 
-# Kalan sıfırları kontrol et
 def sifirlari_bul(tablo):
     for i in range(9):
         for j in range(9):
@@ -38,7 +32,6 @@ def sifirlari_bul(tablo):
                 return [i, j]
     return None
 
-#
 def sudoku_dfs(tamamlanmis_tablo):
     sifir_indeksleri = sifirlari_bul(tamamlanmis_tablo)
     if sifir_indeksleri is None:
@@ -49,14 +42,13 @@ def sudoku_dfs(tamamlanmis_tablo):
             tamamlanmis_tablo[i, j] = deger
             print(f"{deger} değeri, {i+1}. satır ve {j+1}. sütuna yerleştirildi.")
             time.sleep(0.25)
-            print(tamamlanmis_tablo)  # Güncel tablo durumunu yazdır
+            print(tamamlanmis_tablo)
             if sudoku_dfs(tamamlanmis_tablo):
                 return True
             print(f"{deger} değeri, {i+1}. satır ve {j+1}. sütundan kaldırıldı. Geri dönülüyor.")
             tamamlanmis_tablo[i, j] = 0
     return False
 
-# ana fonksiyon
 def main():
     baslangic_zamani = time.time()
     tablo = np.array([[9, 0, 0, 1, 7, 0, 4, 0, 2],
