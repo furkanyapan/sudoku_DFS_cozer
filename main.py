@@ -49,26 +49,24 @@ def sudoku_dfs(tamamlanmis_tablo):
             tamamlanmis_tablo[i, j] = 0
     return False
 
-def main():
-    baslangic_zamani = time.time()
-    tablo = np.array([[9, 0, 0, 1, 7, 0, 4, 0, 2],
-                      [1, 6, 0, 0, 4, 0, 0, 9, 5],
-                      [0, 0, 8, 0, 0, 3, 0, 0, 0],
-                      [0, 1, 0, 9, 0, 0, 5, 7, 3],
-                      [0, 4, 0, 0, 0, 0, 0, 2, 0],
-                      [5, 8, 9, 0, 0, 7, 0, 1, 0],
-                      [0, 0, 0, 4, 0, 0, 7, 0, 0],
-                      [6, 7, 0, 0, 2, 0, 0, 5, 8],
-                      [3, 0, 1, 0, 5, 8, 0, 0, 6]])
 
-    if sudoku_dfs(tablo):
-        bitis_zamani = time.time()
-        print("Arama tamamlandı!")
-        print("Toplam geçen süre", round(((bitis_zamani - baslangic_zamani) * 1000), 2), "milisaniyeydi!")
-        print("Tamamlanmış Sudoku Bulmacası:")
-        print(tablo)
-    else:
-        print("Bu Sudoku bulmacasının çözümü yok.")
+baslangic_zamani = time.time()
+tablo = np.array([[9, 0, 0, 1, 7, 0, 4, 0, 2],
+                  [1, 6, 0, 0, 4, 0, 0, 9, 5],
+                  [0, 0, 8, 0, 0, 3, 0, 0, 0],
+                  [0, 1, 0, 9, 0, 0, 5, 7, 3],
+                  [0, 4, 0, 0, 0, 0, 0, 2, 0],
+                  [5, 8, 9, 0, 0, 7, 0, 1, 0],
+                  [0, 0, 0, 4, 0, 0, 7, 0, 0],
+                  [6, 7, 0, 0, 2, 0, 0, 5, 8],
+                  [3, 0, 1, 0, 5, 8, 0, 0, 6]])
 
-if __name__ == "__main__":
-    main()
+if sudoku_dfs(tablo):
+    bitis_zamani = time.time()
+    print("Arama tamamlandı!")
+    print("Toplam geçen süre", round(((bitis_zamani - baslangic_zamani) * 1000), 2), "milisaniyeydi!")
+    print("Tamamlanmış Sudoku Bulmacası:")
+    print(tablo)
+else:
+    print("Bu Sudoku bulmacasının çözümü yok.")
+
